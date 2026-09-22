@@ -1,5 +1,18 @@
 const pool = require('../config/db');
 
+const {
+    analyzeProject
+} = require('../services/openrouterService');
+
+const {
+    getActiveSkills
+} = require('../services/skillService');
+
+
+// ============================================================
+// CREATE PROJECT
+// ============================================================
+
 const createProject = async (req, res) => {
     try {
         const {
@@ -11,6 +24,10 @@ const createProject = async (req, res) => {
             application_close_at,
             deadline
         } = req.body;
+
+        // ----------------------------------------------------
+        // Validation
+        // ----------------------------------------------------
 
         if (!title || !description) {
             return res.status(400).json({
@@ -43,6 +60,60 @@ const createProject = async (req, res) => {
             });
         }
 
+        // ----------------------------------------------------
+        // Get canonical skills from database
+        // ----------------------------------------------------
+
+        const skills = await getActiveSkills();
+
+        const availableSkillNames = skills.map(
+            skill => skill.name
+        );
+
+        // ----------------------------------------------------
+        // Analyze project using AI
+        // ----------------------------------------------------
+
+        const analysis = await analyzeProject(
+            title,
+            description,
+            availableSkillNames
+        );
+
+        // ----------------------------------------------------
+        // Validate AI response
+        // ----------------------------------------------------
+
+        if (
+            !analysis ||
+            !Array.isArray(analysis.skills) ||
+            !Number.isInteger(analysis.complexity) ||
+            analysis.complexity < 1 ||
+            analysis.complexity > 5 ||
+            typeof analysis.complexity_reason !== 'string'
+        ) {
+            throw new Error('Invalid project analysis returned by AI');
+        }
+
+        // ----------------------------------------------------
+        // Map AI skill names to database skill IDs
+        // ----------------------------------------------------
+
+        const skillMap = new Map(
+            skills.map(skill => [
+                skill.name,
+                skill.id
+            ])
+        );
+
+        const matchedSkillIds = analysis.skills
+            .map(skillName => skillMap.get(skillName))
+            .filter(skillId => skillId !== undefined);
+
+        // ----------------------------------------------------
+        // Create project
+        // ----------------------------------------------------
+
         const [result] = await pool.execute(
             `INSERT INTO projects (
                 client_id,
@@ -52,38 +123,79 @@ const createProject = async (req, res) => {
                 budget_max,
                 application_open_at,
                 application_close_at,
-                deadline
+                deadline,
+                complexity,
+                complexity_reason
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
             [
                 req.user.id,
                 title,
                 description,
-                budget_min || null,
-                budget_max || null,
-                application_open_at || null,
-                application_close_at || null,
-                deadline || null
+                budget_min ?? null,
+                budget_max ?? null,
+                application_open_at ?? null,
+                application_close_at ?? null,
+                deadline ?? null,
+                analysis.complexity,
+                analysis.complexity_reason
             ]
         );
+
+        const projectId = result.insertId;
+
+        // ----------------------------------------------------
+        // Insert project ↔ skill relationships
+        // ----------------------------------------------------
+
+        if (matchedSkillIds.length > 0) {
+
+            const values = matchedSkillIds.map(
+                skillId => [
+                    projectId,
+                    skillId
+                ]
+            );
+
+            await pool.query(
+                `INSERT INTO project_skills (
+                    project_id,
+                    skill_id
+                )
+                VALUES ?`,
+                [values]
+            );
+        }
+
+        // ----------------------------------------------------
+        // Return created project
+        // ----------------------------------------------------
 
         return res.status(201).json({
             success: true,
             message: 'Project created successfully',
+
             project: {
-                id: result.insertId,
+                id: projectId,
                 client_id: req.user.id,
                 title,
                 description,
-                budget_min: budget_min || null,
-                budget_max: budget_max || null,
-                application_open_at: application_open_at || null,
-                application_close_at: application_close_at || null,
-                deadline: deadline || null,
-                status: 'OPEN'
+                budget_min: budget_min ?? null,
+                budget_max: budget_max ?? null,
+                application_open_at: application_open_at ?? null,
+                application_close_at: application_close_at ?? null,
+                deadline: deadline ?? null,
+                status: 'OPEN',
+
+                complexity: analysis.complexity,
+                complexity_reason: analysis.complexity_reason,
+
+                skills: analysis.skills
             }
         });
+
     } catch (error) {
+
         console.error('Create project error:', error);
 
         return res.status(500).json({
@@ -92,8 +204,15 @@ const createProject = async (req, res) => {
         });
     }
 };
+
+
+// ============================================================
+// GET MY PROJECTS
+// ============================================================
+
 const getMyProjects = async (req, res) => {
     try {
+
         const [projects] = await pool.execute(
             `SELECT
                 id,
@@ -106,6 +225,8 @@ const getMyProjects = async (req, res) => {
                 application_close_at,
                 deadline,
                 status,
+                complexity,
+                complexity_reason,
                 created_at,
                 updated_at
              FROM projects
@@ -118,7 +239,9 @@ const getMyProjects = async (req, res) => {
             success: true,
             projects
         });
+
     } catch (error) {
+
         console.error('Get my projects error:', error);
 
         return res.status(500).json({
@@ -127,8 +250,15 @@ const getMyProjects = async (req, res) => {
         });
     }
 };
+
+
+// ============================================================
+// GET PROJECT BY ID
+// ============================================================
+
 const getProjectById = async (req, res) => {
     try {
+
         const projectId = req.params.id;
 
         const [projects] = await pool.execute(
@@ -143,6 +273,8 @@ const getProjectById = async (req, res) => {
                 application_close_at,
                 deadline,
                 status,
+                complexity,
+                complexity_reason,
                 created_at,
                 updated_at
              FROM projects
@@ -159,7 +291,10 @@ const getProjectById = async (req, res) => {
 
         const project = projects[0];
 
+        // ----------------------------------------------------
         // Client can always view their own project
+        // ----------------------------------------------------
+
         if (
             req.user.role === 'CLIENT' &&
             project.client_id === req.user.id
@@ -170,7 +305,10 @@ const getProjectById = async (req, res) => {
             });
         }
 
+        // ----------------------------------------------------
         // Other authenticated users can only view OPEN projects
+        // ----------------------------------------------------
+
         if (project.status !== 'OPEN') {
             return res.status(403).json({
                 success: false,
@@ -184,6 +322,7 @@ const getProjectById = async (req, res) => {
         });
 
     } catch (error) {
+
         console.error('Get project by ID error:', error);
 
         return res.status(500).json({
@@ -192,8 +331,15 @@ const getProjectById = async (req, res) => {
         });
     }
 };
+
+
+// ============================================================
+// UPDATE PROJECT
+// ============================================================
+
 const updateProject = async (req, res) => {
     try {
+
         const projectId = req.params.id;
 
         const {
@@ -205,6 +351,10 @@ const updateProject = async (req, res) => {
             application_close_at,
             deadline
         } = req.body;
+
+        // ----------------------------------------------------
+        // Validation
+        // ----------------------------------------------------
 
         if (!title || !description) {
             return res.status(400).json({
@@ -236,6 +386,10 @@ const updateProject = async (req, res) => {
                 message: 'Application close time must be after open time'
             });
         }
+
+        // ----------------------------------------------------
+        // Update project
+        // ----------------------------------------------------
 
         const [result] = await pool.execute(
             `UPDATE projects
@@ -275,6 +429,7 @@ const updateProject = async (req, res) => {
         });
 
     } catch (error) {
+
         console.error('Update project error:', error);
 
         return res.status(500).json({
@@ -283,12 +438,26 @@ const updateProject = async (req, res) => {
         });
     }
 };
+
+
+// ============================================================
+// CANCEL PROJECT
+// ============================================================
+
 const cancelProject = async (req, res) => {
     try {
+
         const projectId = req.params.id;
 
+        // ----------------------------------------------------
+        // Find project
+        // ----------------------------------------------------
+
         const [projects] = await pool.execute(
-            `SELECT id, client_id, status
+            `SELECT
+                id,
+                client_id,
+                status
              FROM projects
              WHERE id = ?`,
             [projectId]
@@ -303,12 +472,20 @@ const cancelProject = async (req, res) => {
 
         const project = projects[0];
 
+        // ----------------------------------------------------
+        // Ownership check
+        // ----------------------------------------------------
+
         if (project.client_id !== req.user.id) {
             return res.status(403).json({
                 success: false,
                 message: 'Access denied'
             });
         }
+
+        // ----------------------------------------------------
+        // Status checks
+        // ----------------------------------------------------
 
         if (project.status === 'CANCELLED') {
             return res.status(400).json({
@@ -324,6 +501,10 @@ const cancelProject = async (req, res) => {
             });
         }
 
+        // ----------------------------------------------------
+        // Cancel project
+        // ----------------------------------------------------
+
         await pool.execute(
             `UPDATE projects
              SET status = 'CANCELLED'
@@ -337,6 +518,7 @@ const cancelProject = async (req, res) => {
         });
 
     } catch (error) {
+
         console.error('Cancel project error:', error);
 
         return res.status(500).json({
@@ -345,6 +527,12 @@ const cancelProject = async (req, res) => {
         });
     }
 };
+
+
+// ============================================================
+// EXPORTS
+// ============================================================
+
 module.exports = {
     createProject,
     getMyProjects,
