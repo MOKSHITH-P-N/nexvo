@@ -2,7 +2,7 @@ const express = require('express');
 
 const {
     getSkills
-} = require('../controllers/skillController');
+} = require('../controllers/skill/skillController');
 
 const router = express.Router();
 

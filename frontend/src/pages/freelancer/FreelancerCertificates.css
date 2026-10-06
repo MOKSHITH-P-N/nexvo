@@ -1,0 +1,446 @@
+.freelancer-certificates-page {
+  min-height: 100vh;
+  background: #fdfcf8;
+  color: #2f332d;
+  padding: 42px 7%;
+  font-family: "Nunito", "Quicksand", sans-serif;
+}
+
+.certificates-header {
+  max-width: 1100px;
+  margin: 0 auto 32px;
+}
+
+.certificates-back-button {
+  border: none;
+  background: transparent;
+  color: #5d7052;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 28px;
+}
+
+.certificates-back-button:hover {
+  text-decoration: underline;
+}
+
+.certificates-heading {
+  text-align: left;
+}
+
+.certificates-eyebrow,
+.certificate-form-eyebrow {
+  margin: 0 0 7px;
+  color: #7c8a72;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.certificates-heading h1 {
+  margin: 0;
+  color: #30372d;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 42px;
+  font-weight: 600;
+}
+
+.certificates-subtitle {
+  margin: 10px 0 0;
+  color: #777b73;
+  font-size: 16px;
+}
+
+.certificates-content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.certificate-form-card {
+  background: #ffffff;
+  border: 1px solid #ded8cf;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 8px 30px rgba(54, 58, 50, 0.04);
+  margin-bottom: 30px;
+}
+
+.certificate-form-heading {
+  margin-bottom: 24px;
+}
+
+.certificate-form-heading h2,
+.certificates-list-heading h2 {
+  margin: 0;
+  color: #343a31;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 27px;
+  font-weight: 600;
+}
+
+.certificate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.certificate-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.certificate-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.certificate-field label {
+  color: #4f554c;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.certificate-field input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #d9d5cd;
+  border-radius: 13px;
+  background: #fdfcf8;
+  color: #34382f;
+  padding: 13px 15px;
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.certificate-field input:focus {
+  border-color: #8a9a7c;
+  box-shadow: 0 0 0 3px rgba(93, 112, 82, 0.09);
+}
+
+.certificate-field input::placeholder {
+  color: #a5a69f;
+}
+
+.certificate-form-note {
+  padding: 13px 16px;
+  border-radius: 13px;
+  background: #f4f5ef;
+  color: #687061;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.certificate-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 3px;
+}
+
+.certificate-save-button,
+.certificate-cancel-button {
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.certificate-save-button {
+  border: 1px solid #5d7052;
+  background: #5d7052;
+  color: #ffffff;
+}
+
+.certificate-save-button:hover:not(:disabled) {
+  background: #4f6246;
+}
+
+.certificate-save-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.certificate-cancel-button {
+  border: 1px solid #ded8cf;
+  background: #ffffff;
+  color: #5b6057;
+}
+
+.certificate-cancel-button:hover {
+  background: #f7f5f0;
+}
+
+.certificates-list-section {
+  margin-top: 8px;
+}
+
+.certificates-list-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.certificate-count {
+  color: #7a8075;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.certificates-list {
+  display: grid;
+  gap: 16px;
+}
+
+.certificate-card {
+  background: #ffffff;
+  border: 1px solid #ded8cf;
+  border-radius: 20px;
+  padding: 23px 25px;
+  box-shadow: 0 6px 22px rgba(54, 58, 50, 0.035);
+}
+
+.certificate-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.certificate-main h3 {
+  margin: 0;
+  color: #343a31;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.certificate-organization {
+  margin: 6px 0 0;
+  color: #747970;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.certificate-status {
+  flex-shrink: 0;
+  border-radius: 999px;
+  padding: 6px 11px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.8px;
+}
+
+.certificate-status.pending {
+  background: #f4efe2;
+  color: #8a7241;
+}
+
+.certificate-status.verified {
+  background: #e9f0e4;
+  color: #54704a;
+}
+
+.certificate-status.rejected {
+  background: #f4e7e4;
+  color: #955b50;
+}
+
+.certificate-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-top: 20px;
+  padding-top: 17px;
+  border-top: 1px solid #eeeae3;
+}
+
+.certificate-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.certificate-detail-label {
+  color: #989b94;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.certificate-detail-value {
+  color: #50564d;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.certificate-link {
+  color: #5d7052;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.certificate-link:hover {
+  text-decoration: underline;
+}
+
+.certificate-actions {
+  display: flex;
+  gap: 9px;
+  margin-top: 20px;
+}
+
+.certificate-edit-button,
+.certificate-delete-button {
+  border-radius: 10px;
+  padding: 9px 15px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.certificate-edit-button {
+  border: 1px solid #d7ddd1;
+  background: #f4f6f1;
+  color: #5d7052;
+}
+
+.certificate-edit-button:hover {
+  background: #eaf0e5;
+}
+
+.certificate-delete-button {
+  border: 1px solid #e1d3cf;
+  background: #fffaf8;
+  color: #96665c;
+}
+
+.certificate-delete-button:hover {
+  background: #f8eeeb;
+}
+
+.certificates-empty-state {
+  border: 1px dashed #d8d3ca;
+  border-radius: 22px;
+  background: #fffefa;
+  padding: 52px 25px;
+  text-align: center;
+}
+
+.certificates-empty-icon {
+  width: 45px;
+  height: 45px;
+  margin: 0 auto 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: #edf1e9;
+  color: #5d7052;
+  font-size: 21px;
+}
+
+.certificates-empty-state h3 {
+  margin: 0;
+  color: #41473d;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 23px;
+}
+
+.certificates-empty-state p {
+  max-width: 470px;
+  margin: 9px auto 0;
+  color: #858980;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.certificates-message {
+  max-width: 1100px;
+  margin: 0 auto 18px;
+  padding: 12px 15px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.certificates-message.success {
+  background: #edf4e9;
+  color: #58714f;
+  border: 1px solid #d7e4d0;
+}
+
+.certificates-message.error {
+  background: #f8ece9;
+  color: #945f56;
+  border: 1px solid #ead6d1;
+}
+
+.certificates-loading {
+  max-width: 1100px;
+  margin: 100px auto;
+  text-align: center;
+  color: #7c8278;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .freelancer-certificates-page {
+    padding: 30px 5%;
+  }
+
+  .certificates-heading h1 {
+    font-size: 35px;
+  }
+
+  .certificate-form-card {
+    padding: 22px;
+    border-radius: 19px;
+  }
+
+  .certificate-form-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .certificates-list-heading {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .certificate-card {
+    padding: 20px;
+  }
+
+  .certificate-card-top {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .certificate-details {
+    gap: 18px;
+  }
+
+  .certificate-form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .certificate-save-button,
+  .certificate-cancel-button {
+    width: 100%;
+  }
+}

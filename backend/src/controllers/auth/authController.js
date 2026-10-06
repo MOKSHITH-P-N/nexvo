@@ -1,5 +1,6 @@
+
 const bcrypt = require('bcrypt');
-const pool = require('../config/db');
+const pool = require('../../config/db');
 const jwt = require('jsonwebtoken');
 
 const register = async (req, res) => {
@@ -66,6 +67,7 @@ const register = async (req, res) => {
         });
     }
 };
+
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -149,6 +151,7 @@ const login = async (req, res) => {
         });
     }
 };
+
 const getMe = async (req, res) => {
     try {
         const [users] = await pool.execute(
@@ -178,6 +181,7 @@ const getMe = async (req, res) => {
             success: true,
             user
         });
+
     } catch (error) {
         console.error('Get current user error:', error);
 
@@ -193,3 +197,4 @@ module.exports = {
     login,
     getMe
 };
+

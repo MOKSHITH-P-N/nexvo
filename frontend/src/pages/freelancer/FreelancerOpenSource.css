@@ -1,0 +1,452 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Nunito:wght@400;500;600;700;800&display=swap");
+
+.freelancer-opensource-page {
+  min-height: 100vh;
+  background: #fdfcf8;
+  color: #2c2c24;
+  padding: 48px 7%;
+  font-family: "Nunito", sans-serif;
+}
+
+.opensource-header {
+  max-width: 1100px;
+  margin: 0 auto 32px;
+}
+
+.opensource-back-button {
+  border: none;
+  background: transparent;
+  color: #5d7052;
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 0;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.opensource-back-button:hover {
+  text-decoration: underline;
+}
+
+.opensource-heading {
+  max-width: 720px;
+}
+
+.opensource-eyebrow,
+.opensource-form-eyebrow {
+  margin: 0 0 8px;
+  color: #8a806f;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.opensource-heading h1 {
+  margin: 0;
+  color: #2c2c24;
+  font-family: "Fraunces", serif;
+  font-size: clamp(38px, 5vw, 58px);
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.opensource-subtitle {
+  margin: 16px 0 0;
+  color: #78786c;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.opensource-content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.opensource-message {
+  max-width: 1100px;
+  margin: 0 auto 24px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.opensource-message.success {
+  background: #edf2e9;
+  border: 1px solid #cbd8c4;
+  color: #4f6345;
+}
+
+.opensource-message.error {
+  background: #f8ece9;
+  border: 1px solid #e2c5bf;
+  color: #a85448;
+}
+
+.opensource-form-card {
+  background: #ffffff;
+  border: 1px solid #ded8cf;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 4px 20px -2px rgba(93, 112, 82, 0.08);
+  margin-bottom: 40px;
+}
+
+.opensource-form-heading {
+  margin-bottom: 28px;
+}
+
+.opensource-form-heading h2 {
+  margin: 0;
+  color: #2c2c24;
+  font-family: "Fraunces", serif;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.opensource-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.opensource-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.opensource-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.opensource-field label {
+  color: #4a4a40;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.opensource-field input,
+.opensource-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ded8cf;
+  border-radius: 14px;
+  background: #fdfcf8;
+  color: #2c2c24;
+  padding: 13px 15px;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.opensource-field textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.opensource-field input:focus,
+.opensource-field textarea:focus {
+  border-color: #5d7052;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(93, 112, 82, 0.1);
+}
+
+.opensource-field input::placeholder,
+.opensource-field textarea::placeholder {
+  color: #aaa69d;
+}
+
+.opensource-form-note {
+  margin-top: -6px;
+  color: #8a806f;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.opensource-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.opensource-save-button,
+.opensource-cancel-button,
+.opensource-edit-button,
+.opensource-delete-button {
+  border: none;
+  border-radius: 999px;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    background 0.2s ease;
+}
+
+.opensource-save-button {
+  background: #5d7052;
+  color: #f3f4f1;
+  padding: 13px 22px;
+}
+
+.opensource-save-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.opensource-save-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.opensource-cancel-button {
+  background: #f0ebe5;
+  color: #4a4a40;
+  padding: 13px 22px;
+}
+
+.opensource-cancel-button:hover {
+  background: #e6dcd1;
+}
+
+.opensource-list-section {
+  padding-bottom: 60px;
+}
+
+.opensource-list-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.opensource-list-heading h2 {
+  margin: 0;
+  color: #2c2c24;
+  font-family: "Fraunces", serif;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.opensource-count {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: #e6dccd;
+  color: #4a4a40;
+  padding: 8px 13px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.opensource-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.opensource-card {
+  background: #ffffff;
+  border: 1px solid #ded8cf;
+  border-radius: 22px;
+  padding: 25px;
+  box-shadow: 0 4px 20px -2px rgba(93, 112, 82, 0.07);
+}
+
+.opensource-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.opensource-main h3 {
+  margin: 0;
+  color: #2c2c24;
+  font-family: "Fraunces", serif;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.opensource-repository {
+  display: inline-block;
+  margin-top: 7px;
+  color: #5d7052;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.opensource-repository:hover {
+  text-decoration: underline;
+}
+
+.opensource-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #eee9e2;
+}
+
+.opensource-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.opensource-detail-label {
+  color: #8a806f;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.opensource-detail-value {
+  color: #4a4a40;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.opensource-description {
+  margin: 20px 0 0;
+  color: #78786c;
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.opensource-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.opensource-edit-button {
+  background: #e6dccd;
+  color: #4a4a40;
+  padding: 10px 18px;
+}
+
+.opensource-edit-button:hover {
+  background: #dcd1c2;
+}
+
+.opensource-delete-button {
+  background: #f8ece9;
+  color: #a85448;
+  padding: 10px 18px;
+}
+
+.opensource-delete-button:hover {
+  background: #f1ddd8;
+}
+
+.opensource-empty-state {
+  text-align: center;
+  background: #ffffff;
+  border: 1px dashed #d7d0c6;
+  border-radius: 24px;
+  padding: 55px 30px;
+}
+
+.opensource-empty-icon {
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  background: #e6dccd;
+  color: #5d7052;
+  font-size: 22px;
+}
+
+.opensource-empty-state h3 {
+  margin: 0;
+  color: #2c2c24;
+  font-family: "Fraunces", serif;
+  font-size: 24px;
+}
+
+.opensource-empty-state p {
+  max-width: 500px;
+  margin: 10px auto 0;
+  color: #78786c;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.opensource-loading {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5d7052;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+@media (max-width: 760px) {
+  .freelancer-opensource-page {
+    padding: 32px 20px;
+  }
+
+  .opensource-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .opensource-form-card {
+    padding: 24px;
+  }
+
+  .opensource-list-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .opensource-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .freelancer-opensource-page {
+    padding: 24px 15px;
+  }
+
+  .opensource-heading h1 {
+    font-size: 40px;
+  }
+
+  .opensource-form-card,
+  .opensource-card {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .opensource-form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .opensource-save-button,
+  .opensource-cancel-button {
+    width: 100%;
+  }
+}
