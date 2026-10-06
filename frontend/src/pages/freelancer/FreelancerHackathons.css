@@ -1,0 +1,388 @@
+.hackathons-page {
+  min-height: 100vh;
+  background: #fdfcf8;
+  color: #2f352d;
+  padding: 40px 24px 80px;
+}
+
+.hackathons-container {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+}
+
+.hackathons-back-button {
+  border: none;
+  background: transparent;
+  color: #5d7052;
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 32px;
+}
+
+.hackathons-back-button:hover {
+  text-decoration: underline;
+}
+
+.hackathons-header {
+  margin-bottom: 32px;
+}
+
+.hackathons-eyebrow,
+.section-label {
+  display: block;
+  color: #7c8b72;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  margin-bottom: 8px;
+}
+
+.hackathons-header h1 {
+  margin: 0 0 10px;
+  color: #35402f;
+  font-family: "Fraunces", serif;
+  font-size: clamp(38px, 5vw, 58px);
+  line-height: 1.05;
+}
+
+.hackathons-header p {
+  max-width: 650px;
+  margin: 0;
+  color: #74766f;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.hackathons-message {
+  padding: 14px 18px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.hackathons-message.success {
+  background: #edf3e8;
+  color: #4f6647;
+}
+
+.hackathons-message.error {
+  background: #f8eaea;
+  color: #8b4d4d;
+}
+
+.hackathon-form-card {
+  background: #ffffff;
+  border: 1px solid #ded8cf;
+  border-radius: 24px;
+  padding: 30px;
+  margin-bottom: 48px;
+  box-shadow: 0 12px 35px rgba(60, 58, 48, 0.05);
+}
+
+.form-card-heading {
+  margin-bottom: 26px;
+}
+
+.form-card-heading h2,
+.list-heading h2 {
+  margin: 0;
+  color: #35402f;
+  font-family: "Fraunces", serif;
+  font-size: 28px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.hackathon-form-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #4b5148;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.hackathon-form-card input,
+.hackathon-form-card textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #d9d5cc;
+  border-radius: 13px;
+  background: #fdfcf9;
+  color: #30362e;
+  padding: 13px 15px;
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hackathon-form-card input:focus,
+.hackathon-form-card textarea:focus {
+  border-color: #8a9c7d;
+  box-shadow: 0 0 0 3px rgba(93, 112, 82, 0.1);
+}
+
+.hackathon-form-card textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.checkbox-field {
+  justify-content: flex-end;
+}
+
+.checkbox-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  color: #4f5e48;
+}
+
+.checkbox-content input {
+  width: 18px;
+  height: 18px;
+  accent-color: #5d7052;
+}
+
+.full-width-field {
+  margin-top: 22px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.primary-button,
+.secondary-button,
+.edit-button,
+.delete-button {
+  border-radius: 999px;
+  padding: 11px 19px;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.primary-button {
+  border: 1px solid #5d7052;
+  background: #5d7052;
+  color: #ffffff;
+}
+
+.primary-button:hover {
+  background: #4f6147;
+}
+
+.secondary-button {
+  border: 1px solid #d6d2ca;
+  background: #ffffff;
+  color: #555c52;
+}
+
+.secondary-button:hover {
+  background: #f4f2ec;
+}
+
+.primary-button:disabled,
+.secondary-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.hackathons-list-section {
+  margin-top: 20px;
+}
+
+.list-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.entry-count {
+  color: #7c8178;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.hackathons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.hackathon-card {
+  background: #ffffff;
+  border: 1px solid #ded8cf;
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: 0 10px 28px rgba(60, 58, 48, 0.04);
+}
+
+.hackathon-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.hackathon-card h3 {
+  margin: 0;
+  color: #35402f;
+  font-family: "Fraunces", serif;
+  font-size: 23px;
+}
+
+.hackathon-position {
+  margin: 6px 0 0;
+  color: #6e7867;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.won-badge {
+  flex-shrink: 0;
+  border-radius: 999px;
+  padding: 7px 11px;
+  background: #f2eee1;
+  color: #756642;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.hackathon-meta {
+  margin-top: 18px;
+  color: #777a72;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+}
+
+.hackathon-description {
+  margin: 18px 0 0;
+  color: #676b63;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.hackathon-actions {
+  display: flex;
+  gap: 9px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #eeeae3;
+}
+
+.edit-button {
+  border: 1px solid #cfd6c9;
+  background: #f5f7f2;
+  color: #53634c;
+}
+
+.edit-button:hover {
+  background: #e9eee5;
+}
+
+.delete-button {
+  border: 1px solid #e2cfcf;
+  background: #fffafa;
+  color: #955b5b;
+}
+
+.delete-button:hover {
+  background: #f9eeee;
+}
+
+.empty-hackathons {
+  border: 1px dashed #d5d1c8;
+  border-radius: 22px;
+  padding: 55px 25px;
+  text-align: center;
+  background: #fffefa;
+}
+
+.empty-icon {
+  font-size: 38px;
+  margin-bottom: 15px;
+}
+
+.empty-hackathons h3 {
+  margin: 0 0 8px;
+  color: #42483e;
+  font-family: "Fraunces", serif;
+  font-size: 24px;
+}
+
+.empty-hackathons p {
+  max-width: 520px;
+  margin: 0 auto;
+  color: #777a72;
+  font-family: "Nunito", sans-serif;
+  line-height: 1.6;
+}
+
+.hackathons-loading {
+  padding: 100px 20px;
+  text-align: center;
+  color: #6e7569;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .hackathons-page {
+    padding: 28px 16px 60px;
+  }
+
+  .hackathon-form-card {
+    padding: 22px;
+  }
+
+  .form-grid,
+  .hackathons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .list-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hackathon-card-top {
+    flex-direction: column;
+  }
+
+  .form-actions {
+    justify-content: stretch;
+    flex-direction: column-reverse;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+  }
+}

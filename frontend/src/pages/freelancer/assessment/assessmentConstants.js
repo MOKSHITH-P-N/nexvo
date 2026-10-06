@@ -1,0 +1,27 @@
+export const QUESTION_COUNT = 20;
+
+export const ASSESSMENT_DURATION_MINUTES = 20;
+
+export const MAX_VIOLATIONS = 3;
+
+export const SCREENS = {
+  HOME: "HOME",
+  TEST: "TEST",
+  RESULT: "RESULT",
+  EXPIRED: "EXPIRED",
+  VIOLATION: "VIOLATION",
+};
+
+export const ANSWER_OPTIONS = [
+  "A",
+  "B",
+  "C",
+  "D",
+];
+
+export const ASSESSMENT_STATUS = {
+  IN_PROGRESS: "IN_PROGRESS",
+  COMPLETED: "COMPLETED",
+  EXPIRED: "EXPIRED",
+  VIOLATION: "VIOLATION",
+};

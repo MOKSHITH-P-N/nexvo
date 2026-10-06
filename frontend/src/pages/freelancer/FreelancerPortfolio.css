@@ -1,0 +1,506 @@
+.portfolio-page {
+  min-height: 100vh;
+  background: #fdfcf8;
+  color: #2f352d;
+  padding: 40px 24px 80px;
+}
+
+.portfolio-container {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+}
+
+.portfolio-back-button {
+  border: none;
+  background: transparent;
+  color: #5d7052;
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 32px;
+}
+
+.portfolio-back-button:hover {
+  text-decoration: underline;
+}
+
+.portfolio-header {
+  margin-bottom: 32px;
+}
+
+.portfolio-eyebrow,
+.section-label {
+  display: block;
+  color: #7c8b72;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  margin-bottom: 8px;
+}
+
+.portfolio-header h1 {
+  margin: 0 0 10px;
+  color: #35402f;
+  font-family: "Fraunces", serif;
+  font-size: clamp(38px, 5vw, 58px);
+  line-height: 1.05;
+}
+
+.portfolio-header p {
+  max-width: 680px;
+  margin: 0;
+  color: #74766f;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.portfolio-message {
+  padding: 14px 18px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.portfolio-message.success {
+  background: #edf3e8;
+  color: #4f6647;
+}
+
+.portfolio-message.error {
+  background: #f8eaea;
+  color: #8b4d4d;
+}
+
+.portfolio-form-card {
+  background: #ffffff;
+  border: 1px solid #ded8cf;
+  border-radius: 24px;
+  padding: 30px;
+  margin-bottom: 48px;
+  box-shadow: 0 12px 35px rgba(60, 58, 48, 0.05);
+}
+
+.form-card-heading {
+  margin-bottom: 26px;
+}
+
+.form-card-heading h2,
+.list-heading h2 {
+  margin: 0 0 7px;
+  color: #35402f;
+  font-family: "Fraunces", serif;
+  font-size: 28px;
+}
+
+.form-card-heading p {
+  margin: 0;
+  color: #777a72;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.portfolio-form-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #4b5148;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.portfolio-form-card input,
+.portfolio-form-card textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #d9d5cc;
+  border-radius: 13px;
+  background: #fdfcf9;
+  color: #30362e;
+  padding: 13px 15px;
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.portfolio-form-card input:focus,
+.portfolio-form-card textarea:focus {
+  border-color: #8a9c7d;
+  box-shadow: 0 0 0 3px rgba(93, 112, 82, 0.1);
+}
+
+.portfolio-form-card textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.full-width-field {
+  margin-top: 22px;
+}
+
+.optional-grid {
+  margin-top: 22px;
+}
+
+.checkbox-field {
+  justify-content: flex-end;
+}
+
+.checkbox-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+}
+
+.checkbox-content input {
+  width: 18px;
+  height: 18px;
+  accent-color: #5d7052;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.primary-button,
+.secondary-button,
+.edit-button,
+.delete-button {
+  border-radius: 999px;
+  padding: 11px 19px;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.primary-button {
+  border: 1px solid #5d7052;
+  background: #5d7052;
+  color: #ffffff;
+}
+
+.primary-button:hover {
+  background: #4f6147;
+}
+
+.primary-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.secondary-button {
+  border: 1px solid #d6d2ca;
+  background: #ffffff;
+  color: #555c52;
+}
+
+.secondary-button:hover {
+  background: #f4f2ec;
+}
+
+.portfolio-list-section {
+  margin-top: 20px;
+}
+
+.list-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.entry-count {
+  color: #7c8178;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.portfolio-card {
+  background: #ffffff;
+  border: 1px solid #ded8cf;
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: 0 10px 28px rgba(60, 58, 48, 0.04);
+}
+
+.portfolio-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.portfolio-card-title {
+  min-width: 0;
+}
+
+.portfolio-card h3 {
+  margin: 0;
+  color: #35402f;
+  font-family: "Fraunces", serif;
+  font-size: 23px;
+  line-height: 1.2;
+}
+
+.portfolio-technologies {
+  margin: 7px 0 0;
+  color: #6d7867;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.complexity-badge {
+  min-width: 88px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  border-radius: 14px;
+  padding: 9px 10px;
+  text-align: center;
+}
+
+.complexity-badge strong {
+  font-family: "Fraunces", serif;
+  font-size: 20px;
+}
+
+.complexity-badge span {
+  font-family: "Nunito", sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.complexity-1 {
+  background: #eef2eb;
+  color: #617058;
+}
+
+.complexity-2 {
+  background: #edf1e6;
+  color: #63734f;
+}
+
+.complexity-3 {
+  background: #f2eee1;
+  color: #756642;
+}
+
+.complexity-4 {
+  background: #f3e9dc;
+  color: #8a6542;
+}
+
+.complexity-5 {
+  background: #f4e3e1;
+  color: #8c5651;
+}
+
+.portfolio-description {
+  margin: 20px 0 0;
+  color: #666b63;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.ai-analysis {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-left: 3px solid #8a9c7d;
+  border-radius: 0 12px 12px 0;
+  background: #f5f7f2;
+}
+
+.ai-analysis-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #617158;
+  font-family: "Nunito", sans-serif;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+}
+
+.ai-analysis p {
+  margin: 0;
+  color: #666d61;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.portfolio-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.portfolio-links a,
+.deployed-badge,
+.stars-badge {
+  border-radius: 999px;
+  padding: 7px 11px;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.portfolio-links a {
+  border: 1px solid #d1d9cc;
+  background: #f4f7f1;
+  color: #53664c;
+  text-decoration: none;
+}
+
+.portfolio-links a:hover {
+  background: #e8eee4;
+}
+
+.deployed-badge {
+  background: #edf3e8;
+  color: #58704f;
+}
+
+.stars-badge {
+  background: #f3efe3;
+  color: #796846;
+}
+
+.portfolio-actions {
+  display: flex;
+  gap: 9px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #eeeae3;
+}
+
+.edit-button {
+  border: 1px solid #cfd6c9;
+  background: #f5f7f2;
+  color: #53634c;
+}
+
+.edit-button:hover {
+  background: #e9eee5;
+}
+
+.delete-button {
+  border: 1px solid #e2cfcf;
+  background: #fffafa;
+  color: #955b5b;
+}
+
+.delete-button:hover {
+  background: #f9eeee;
+}
+
+.empty-portfolio {
+  border: 1px dashed #d5d1c8;
+  border-radius: 22px;
+  padding: 55px 25px;
+  text-align: center;
+  background: #fffefa;
+}
+
+.empty-icon {
+  font-size: 38px;
+  margin-bottom: 15px;
+}
+
+.empty-portfolio h3 {
+  margin: 0 0 8px;
+  color: #42483e;
+  font-family: "Fraunces", serif;
+  font-size: 24px;
+}
+
+.empty-portfolio p {
+  max-width: 520px;
+  margin: 0 auto;
+  color: #777a72;
+  font-family: "Nunito", sans-serif;
+  line-height: 1.6;
+}
+
+.portfolio-loading {
+  padding: 100px 20px;
+  text-align: center;
+  color: #6e7569;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .portfolio-page {
+    padding: 28px 16px 60px;
+  }
+
+  .portfolio-form-card {
+    padding: 22px;
+  }
+
+  .form-grid,
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .list-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .portfolio-card-top {
+    flex-direction: column;
+  }
+
+  .complexity-badge {
+    align-self: flex-start;
+  }
+
+  .form-actions {
+    justify-content: stretch;
+    flex-direction: column-reverse;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+  }
+}
